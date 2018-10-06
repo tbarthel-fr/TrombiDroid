@@ -2,12 +2,12 @@ package apps.mogmi.fr.trombidroid.dashboard
 
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.support.v7.widget.RecyclerView
-import apps.mogmi.fr.trombidroid.data.Person
 import apps.mogmi.fr.trombidroid.R
+import apps.mogmi.fr.trombidroid.data.Person
 
 class DashboardView @JvmOverloads constructor(
         context: Context,
@@ -16,7 +16,7 @@ class DashboardView @JvmOverloads constructor(
         defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyle, defStyleRes), DashboardContract.View {
 
-    private var recyclerView : RecyclerView
+    private var recyclerView: RecyclerView
     private var adapter: DashboardAdapter
     private var presenter: DashboardPresenter
 

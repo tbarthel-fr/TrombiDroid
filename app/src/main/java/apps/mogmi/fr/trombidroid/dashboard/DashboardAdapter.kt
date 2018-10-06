@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import apps.mogmi.fr.trombidroid.data.Person
 import apps.mogmi.fr.trombidroid.R
+import apps.mogmi.fr.trombidroid.data.Person
 
 class DashboardAdapter : RecyclerView.Adapter<DashboardAdapter.PersonHolder>() {
 
