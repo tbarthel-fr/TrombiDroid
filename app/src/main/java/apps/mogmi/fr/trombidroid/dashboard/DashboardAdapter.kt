@@ -1,11 +1,7 @@
 package apps.mogmi.fr.trombidroid.dashboard
 
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import apps.mogmi.fr.trombidroid.R
 import apps.mogmi.fr.trombidroid.data.Person
 
 class DashboardAdapter : RecyclerView.Adapter<DashboardAdapter.PersonHolder>() {
@@ -13,7 +9,12 @@ class DashboardAdapter : RecyclerView.Adapter<DashboardAdapter.PersonHolder>() {
     private val persons: ArrayList<Person> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dashboard, parent, false)
+        val view = PersonItemView(parent.context).apply {
+            layoutParams = RecyclerView.LayoutParams(
+                    RecyclerView.LayoutParams.MATCH_PARENT,
+                    RecyclerView.LayoutParams.WRAP_CONTENT
+            )
+        }
         return PersonHolder(view)
     }
 
@@ -22,7 +23,7 @@ class DashboardAdapter : RecyclerView.Adapter<DashboardAdapter.PersonHolder>() {
     }
 
     override fun onBindViewHolder(holder: PersonHolder, position: Int) {
-        holder.textView.text = persons[position].name
+        holder.view.viewModel = persons[position]
     }
 
     public fun update(persons: List<Person>) {
@@ -31,8 +32,5 @@ class DashboardAdapter : RecyclerView.Adapter<DashboardAdapter.PersonHolder>() {
         notifyDataSetChanged()
     }
 
-    class PersonHolder(val view: View) : RecyclerView.ViewHolder(view) {
-
-        val textView: TextView = view.findViewById<TextView>(R.id.item_dashboard_name)
-    }
+    class PersonHolder(val view: PersonItemView) : RecyclerView.ViewHolder(view)
 }
